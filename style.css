@@ -1,52 +1,76 @@
+/* Base styles */
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fdfdfd;
+  background-color: #fef6f9; /* pastel pink */
   color: #333;
+  line-height: 1.6;
+}
+
+a {
+  color: #d63384; /* dark pink accent */
+  text-decoration: none;
 }
 
 header {
-  background-color: #4CAF50;
-  color: white;
-  padding: 2rem;
+  background-color: #ffe6ec; /* soft pastel */
+  color: #d63384;
   text-align: center;
+  padding: 2rem;
 }
 
 .tagline {
   font-style: italic;
-  font-size: 1.2rem;
+  font-weight: 300;
+  color: #555;
 }
 
+/* Profile picture styling */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+/* Section styles */
 section {
-  padding: 2rem;
-  margin: 1rem;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(214, 51, 132, 0.05);
 }
 
+h2 {
+  color: #d63384;
+}
+
+/* Skill list */
 ul {
   list-style: none;
   padding: 0;
 }
 
 li {
-  background: #e8f5e9;
+  background: #ffe6ec;
   margin: 0.5rem 0;
-  padding: 0.5rem;
-  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  color: #444;
+  font-weight: 500;
 }
 
-a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
-  background: #eee;
-  color: #777;
+  background: #ffe6ec;
+  color: #d63384;
+  font-size: 0.9rem;
 }
+
