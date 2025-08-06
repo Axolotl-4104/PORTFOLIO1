@@ -1,25 +1,25 @@
-/* Background heart emojis in center */
+/* Central faded hearts in background */
 body::before {
   content: "💖 💕 💗 💞 💘";
   position: fixed;
   top: 50%;
   left: 50%;
   font-size: 20rem;
-  opacity: 0.04;
+  opacity: 0.08; /* Increased from 0.04 */
   transform: translate(-50%, -50%) rotate(-20deg);
   z-index: -1;
   white-space: nowrap;
   pointer-events: none;
 }
 
-/* Floating animated hearts */
+/* Floating hearts animation */
 @keyframes float {
   0% {
     transform: translateY(0);
-    opacity: 0;
+    opacity: 0.4;
   }
   50% {
-    opacity: 0.2;
+    opacity: 0.7;
   }
   100% {
     transform: translateY(-100vh);
@@ -29,8 +29,8 @@ body::before {
 
 .heart {
   position: fixed;
-  font-size: 2rem;
-  opacity: 0.1;
+  font-size: 2.2rem;
+  opacity: 0.6; /* Increased visibility */
   animation: float 10s linear infinite;
   color: #d63384;
   pointer-events: none;
@@ -39,92 +39,4 @@ body::before {
 
 /* Main body styling */
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fef6f9; /* pastel pink */
-  color: #333;
-  line-height: 1.6;
-}
-
-/* Links */
-a {
-  color: #d63384;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #a61e61;
-}
-
-/* Header styling */
-header {
-  background-color: #ffe6ec;
-  color: #d63384;
-  text-align: center;
-  padding: 2rem;
-}
-
-/* Tagline text */
-.tagline {
-  font-style: italic;
-  font-weight: 300;
-  color: #555;
-}
-
-/* Profile picture styling */
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #fff;
-  box-shadow: 0 0 12px rgba(214, 51, 132, 0.4);
-  margin-bottom: 1rem;
-}
-
-/* Section boxes */
-section {
-  background: #fff;
-  margin: 1.5rem;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(214, 51, 132, 0.05);
-}
-
-/* Section headings */
-h2 {
-  color: #d63384;
-}
-
-/* Skill list */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  background: #ffe6ec;
-  margin: 0.5rem 0;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  color: #444;
-  font-weight: 500;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-li:hover {
-  transform: scale(1.05);
-  background-color: #fddde6;
-}
-
-/* Footer styling */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #ffe6ec;
-  color: #d63384;
-  font-size: 0.9rem;
-}
+  font-family: 'Poppins', sans
