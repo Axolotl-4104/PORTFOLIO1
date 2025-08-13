@@ -227,23 +227,46 @@ section:nth-of-type(3){ animation-delay: .19s; }
 section:nth-of-type(4){ animation-delay: .26s; }
 
 /* 🌸 Background Flowers instead of hearts */
-.flowers{
+/* 🌸 Big semi-transparent pastel flowers background */
+.flowers {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
 }
-.flowers span{
+
+.flowers::before,
+.flowers::after {
+  content: "";
   position: absolute;
-  font-size: 1.4rem;
-  opacity: .35;
-  animation: drift var(--d,12s) linear infinite;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.18; /* semi-transparent */
+  filter: blur(2px);
+  animation: floatFlowers 40s linear infinite;
 }
-.flowers span::before{
-  content: "🌸";
+
+.flowers::before {
+  top: -10%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='pink' d='M50 5 C65 15, 85 15, 95 30 C85 45, 85 65, 70 75 C55 85, 45 95, 30 85 C15 75, 5 65, 5 50 C5 35, 15 15, 30 10 Z'/></svg>");
 }
-@keyframes drift{
-  from{ transform: translateY(110vh) translateX(var(--x,0)) rotate(0deg); }
-  to{ transform: translateY(-15vh) translateX(calc(var(--x,0) * -1)) rotate(360deg); }
+
+.flowers::after {
+  bottom: -15%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='lavender' d='M50 5 C65 15, 85 15, 95 30 C85 45, 85 65, 70 75 C55 85, 45 95, 30 85 C15 75, 5 65, 5 50 C5 35, 15 15, 30 10 Z'/></svg>");
 }
+
+@keyframes floatFlowers {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+
