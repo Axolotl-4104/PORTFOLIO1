@@ -1,42 +1,283 @@
-/* Central faded hearts in background */
-body::before {
-  content: "💖 💕 💗 💞 💘";
+/* ---------------------------------------------
+   Akshita • Pro Pastel Theme (Dark-Pink Accent)
+   - clean, responsive, interactive
+   - auto dark-mode via prefers-color-scheme
+   - works with your existing HTML structure
+------------------------------------------------ */
+
+/* ---------- Design tokens ---------- */
+:root{
+  --bg: #fef7fb;              /* pastel canvas */
+  --surface: #ffffff;         /* cards */
+  --surface-2: #fff1f6;       /* subtle tint */
+  --text: #2c2830;            /* body text */
+  --muted: #6a6270;           /* secondary text */
+  --accent: #d63384;          /* dark pink */
+  --accent-600: #b3246c;
+  --accent-100: #ffe1ef;      /* pale pink */
+  --ring: rgba(214,51,132,.25);
+  --shadow: 0 8px 24px rgba(214,51,132,.10), 0 2px 8px rgba(0,0,0,.04);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --gap: clamp(16px, 2vw, 28px);
+  --maxw: 980px;
+}
+
+/* Dark mode (auto) */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #141217;
+    --surface: #1b1920;
+    --surface-2: #241f27;
+    --text: #f4eef6;
+    --muted: #c4b9c9;
+    --accent: #ff5aa6;
+    --accent-600: #ff2f90;
+    --accent-100: #361a2a;
+    --ring: rgba(255,90,166,.25);
+    --shadow: 0 10px 30px rgba(0,0,0,.45);
+  }
+}
+
+/* ---------- Base / reset ---------- */
+*,
+*::before,
+*::after{ box-sizing: border-box; }
+
+html{
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body{
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% -20%, var(--accent-100) 0%, transparent 60%),
+    radial-gradient(900px 700px at 110% 10%, var(--accent-100) 0%, transparent 55%),
+    var(--bg);
+  line-height: 1.65;
+}
+
+/* container */
+main{ padding: 3rem 1.25rem; }
+@media (min-width: 768px){
+  main{ padding: 4rem 2rem; }
+}
+section{
+  max-width: var(--maxw);
+  margin: 0 auto var(--gap);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: clamp(18px, 3.5vw, 28px);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(214,51,132,.08);
+  transform: translateY(0);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+section:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(214,51,132,.14), 0 6px 14px rgba(0,0,0,.06);
+  border-color: var(--ring);
+}
+
+/* ---------- Header / hero ---------- */
+header{
+  background:
+    linear-gradient(180deg, rgba(214,51,132,.08), rgba(214,51,132,0)),
+    var(--surface-2);
+  border-bottom: 1px solid rgba(214,51,132,.10);
+  text-align: center;
+  padding: clamp(36px, 7vw, 72px) 16px;
+}
+
+header h1{
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: .5px;
+  font-size: clamp(32px, 5.6vw, 56px);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-600) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline{
+  margin: 10px auto 0;
+  color: var(--muted);
+  font-weight: 300;
+  font-size: clamp(14px, 2.2vw, 18px);
+}
+
+/* optional profile image (won’t break if missing) */
+.profile-pic{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 6px var(--accent-100), 0 6px 22px rgba(214,51,132,.25);
+  margin: 0 auto 14px;
+  display: block;
+}
+
+/* ---------- Headings with accent underline ---------- */
+h2{
+  position: relative;
+  margin: 0 0 14px;
+  font-size: clamp(20px, 3.4vw, 28px);
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--text);
+}
+h2::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 84px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: .85;
+}
+
+/* ---------- Typography ---------- */
+p{ margin: 0 0 10px; color: var(--text); }
+strong{ color: var(--accent-600); }
+small{ color: var(--muted); }
+
+/* ---------- Links ---------- */
+a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .25s ease;
+  outline: none;
+}
+a:hover{ color: var(--accent-600); }
+a:focus-visible{
+  box-shadow: 0 0 0 6px var(--ring);
+  border-radius: 8px;
+}
+
+/* animated underline on hover */
+a:not(.btn){
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  transition: background-size .35s ease, color .25s ease;
+}
+a:not(.btn):hover{ background-size: 100% 2px; }
+
+/* ---------- Lists / skills as pills ---------- */
+ul{ list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 10px; }
+@media (min-width: 560px){
+  ul{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+li{
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border: 1px solid rgba(214,51,132,.12);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform .26s ease, box-shadow .26s ease, border-color .26s ease;
+  box-shadow: 0 2px 10px rgba(214,51,132,.06);
+}
+li::before{
+  content: "◆";
+  font-size: 10px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 4px rgba(214,51,132,.45));
+}
+li:hover{
+  transform: translateY(-3px);
+  border-color: var(--ring);
+  box-shadow: 0 10px 26px rgba(214,51,132,.12);
+}
+
+/* ---------- Card micro-interactions ---------- */
+section:hover h2::after{
+  width: 120px;
+  transition: width .5s cubic-bezier(.2,.8,.2,1);
+}
+
+/* ---------- Buttons (use by adding class="btn") ---------- */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 20px rgba(214,51,132,.25);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover{
+  transform: translateY(-2px);
+  background: var(--accent-600);
+  box-shadow: 0 14px 28px rgba(214,51,132,.30);
+}
+.btn:active{ transform: translateY(0); }
+.btn:focus-visible{ box-shadow: 0 0 0 6px var(--ring), 0 10px 20px rgba(214,51,132,.25); }
+
+/* Example: style contact links like buttons inside #contact */
+#contact a{ display: inline-block; margin-right: 10px; }
+#contact a[href^="mailto"]{ margin-right: 14px; }
+#contact p{ margin-bottom: 12px; }
+
+/* ---------- Entrance animations (no JS) ---------- */
+@keyframes fadeUp{
+  from{ opacity: 0; transform: translateY(14px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+header, section, footer{
+  animation: fadeUp .6s ease both;
+}
+section:nth-of-type(1){ animation-delay: .05s; }
+section:nth-of-type(2){ animation-delay: .12s; }
+section:nth-of-type(3){ animation-delay: .19s; }
+section:nth-of-type(4){ animation-delay: .26s; }
+
+/* ---------- Decorative hearts (tasteful) ---------- */
+/* center watermark */
+body::before{
+  content: "💖  💕  💗  💞  💘";
   position: fixed;
-  top: 50%;
-  left: 50%;
-  font-size: 20rem;
-  opacity: 0.08; /* Increased from 0.04 */
-  transform: translate(-50%, -50%) rotate(-20deg);
+  inset: 0;
+  margin: auto;
+  width: max-content;
+  height: max-content;
+  font-size: clamp(12rem, 26vw, 22rem);
+  opacity: .08;
+  transform: rotate(-12deg);
   z-index: -1;
-  white-space: nowrap;
   pointer-events: none;
+  line-height: 1;
+  filter: contrast(110%) saturate(110%);
 }
 
-/* Floating hearts animation */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  100% {
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-}
-
-.heart {
-  position: fixed;
-  font-size: 2.2rem;
-  opacity: 0.6; /* Increased visibility */
-  animation: float 10s linear infinite;
-  color: #d63384;
+/* randomized floating hearts (CSS only, no JS) */
+.hearts{
   pointer-events: none;
+  position: fixed; inset: 0;
   z-index: -1;
+  overflow: hidden;
 }
+.hearts span{
+  position: absolute;
+  font-size: 1.4rem;
+  opacity: .35;
+  animation: drift var(--d,12s) linear infinite;
+  color: var(--accent);
+}
+@keyframes drift{
+  from{ transform: translateY(110vh) translateX(var(--x,0)) rotate(0deg); }
+  to{   transform: translateY(-15vh) translateX(calc(var(--x,0) * -*
 
-/* Main body styling */
-body {
-  font-family: 'Poppins', sans
