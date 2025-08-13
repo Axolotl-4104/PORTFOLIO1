@@ -1,20 +1,14 @@
-/* ---------------------------------------------
-   Akshita • Pro Pastel Theme (Dark-Pink Accent)
-   - clean, responsive, interactive
-   - auto dark-mode via prefers-color-scheme
-   - works with your existing HTML structure
------------------------------------------------- */
 
-/* ---------- Design tokens ---------- */
+
 :root{
-  --bg: #fef7fb;              /* pastel canvas */
-  --surface: #ffffff;         /* cards */
-  --surface-2: #fff1f6;       /* subtle tint */
-  --text: #2c2830;            /* body text */
-  --muted: #6a6270;           /* secondary text */
-  --accent: #d63384;          /* dark pink */
+  --bg: #fef7fb;             
+  --surface: #ffffff;        
+  --surface-2: #fff1f6;       
+  --text: #2c2830;          
+  --muted: #6a6270;           
+  --accent: #d63384;         
   --accent-600: #b3246c;
-  --accent-100: #ffe1ef;      /* pale pink */
+  --accent-100: #ffe1ef;     
   --ring: rgba(214,51,132,.25);
   --shadow: 0 8px 24px rgba(214,51,132,.10), 0 2px 8px rgba(0,0,0,.04);
 
@@ -24,7 +18,7 @@
   --maxw: 980px;
 }
 
-/* Dark mode (auto) */
+
 @media (prefers-color-scheme: dark){
   :root{
     --bg: #141217;
@@ -39,8 +33,6 @@
     --shadow: 0 10px 30px rgba(0,0,0,.45);
   }
 }
-
-/* ---------- Base / reset ---------- */
 *,
 *::before,
 *::after{ box-sizing: border-box; }
@@ -245,10 +237,9 @@ section:nth-of-type(2){ animation-delay: .12s; }
 section:nth-of-type(3){ animation-delay: .19s; }
 section:nth-of-type(4){ animation-delay: .26s; }
 
-/* ---------- Decorative hearts (tasteful) ---------- */
-/* center watermark */
+
 body::before{
-  content: "💖  💕  💗  💞  💘";
+  content: "";
   position: fixed;
   inset: 0;
   margin: auto;
@@ -263,7 +254,6 @@ body::before{
   filter: contrast(110%) saturate(110%);
 }
 
-/* randomized floating hearts (CSS only, no JS) */
 .hearts{
   pointer-events: none;
   position: fixed; inset: 0;
@@ -280,4 +270,5 @@ body::before{
 @keyframes drift{
   from{ transform: translateY(110vh) translateX(var(--x,0)) rotate(0deg); }
   to{   transform: translateY(-15vh) translateX(calc(var(--x,0) * -*
+
 
